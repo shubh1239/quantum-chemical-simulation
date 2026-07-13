@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computing Portfolio | Shubham Jaju</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- MathJax for rendering gorgeous math equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js?config=TeX-mml-chtml"></script>
+</head>
+<body>
+    <header>
+        <h1>Variational Quantum Eigensolver (VQE) Prototyping</h1>
+        <p>An end-to-end verification of the $H_2$ ground state using analytical derivation, NumPy, and Qiskit.</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>1. The Analytical Foundation</h2>
+            <p>Using a minimal basis set mapped via a Jordan-Wigner transformation, the two-qubit Hamiltonian for the Hydrogen molecule simplifies to a combination of Pauli terms. By selecting a particle-conserving ansatz state:</p>
+            
+            $$\mid\psi(\theta)\rangle = \cos(\theta/2)\mid01\rangle - \sin(\theta/2)\mid10\rangle$$
+
+            <p>The expectation value of the energy as a function of the rotation angle $\theta$ maps explicitly to the analytic energy surface equation:</p>
+            
+            $$E(\theta) = -1.052 + 0.7782\cos(\theta) - 0.182\sin(\theta)$$
+
+            <p>Optimizing analytically where $\frac{dE}{d\theta} = 0$ yields $\tan(\theta) = -\frac{0.182}{0.7782}$, localizing the optimal parameter at $\theta \approx 2.911\text{ rad } (166.8^\circ)$ with a theoretical ground state energy of **$-1.851199\text{ Hartree}$**.</p>
+        </section>
+
+        <section class="card">
+            <h2>2. Classical Matrix Verification (NumPy)</h2>
+            <p>To validate the math before deploying to quantum hardware syntax, a raw matrix representation was constructed in Python. Using <code>scipy.optimize</code>, the classical optimizer successfully converged on the identical global minimum:</p>
+            <ul>
+                <li><strong>Optimal Parameter ($\theta$):</strong> 2.9118 rad</li>
+                <li><strong>Computed Energy:</strong> -1.851199 Hartree</li>
+                <li><strong>Delta vs Exact Diagonalization:</strong> $3.56 \times 10^{-11}$ Hartree (well within chemical accuracy)</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>3. Quantum Circuit Port (Qiskit)</h2>
+            <p>The system was translated into native quantum circuits using Qiskit's <code>StatevectorEstimator</code> primitive. The ansatz preparation circuit prepares the highly entangled singlet state layout efficiently:</p>
+            <pre>
+     ┌───┐         ┌───┐
+q_0: ─────┤ X ├────■────┤ X ├
+     ┌───┐└─┬─┘┌───┴───┐└─┬─┘
+q_1: ┤ X ├──■──┤ Ry(θ) ├──■──
+     └───┘     └───────┘     
+            </pre>
+            <p>The Qiskit primitive pipeline confirmed flawless alignment with our analytical expectations, tracking the state vector exactly to a precision delta of $4.48 \times 10^{-13}$ Hartree.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Shubham Jaju. Focused on Quantum Architectures and Applied Machine Learning.</p>
+    </footer>
+</body>
+</html>
