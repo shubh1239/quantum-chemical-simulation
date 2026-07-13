@@ -18,6 +18,7 @@
     <main>
         <section class="card">
             <h2>1. The Analytical Foundation</h2>
+            <p><a href="https://github.com/shubh1239/quantum-chemical-simulation/tree/main/notebooks" target="_blank" style="color: #38bdf8; text-decoration: underline;">View the complete handwritten mathematical derivations here</a>.</p>
             <p>Using a minimal basis set mapped via a Jordan-Wigner transformation, the two-qubit Hamiltonian for the Hydrogen molecule simplifies to a combination of Pauli terms. By selecting a particle-conserving ansatz state:</p>
             
             $$\mid\psi(\theta)\rangle = \cos(\theta/2)\mid01\rangle - \sin(\theta/2)\mid10\rangle$$
@@ -37,6 +38,9 @@
                 <li><strong>Computed Energy:</strong> -1.851199 Hartree</li>
                 <li><strong>Delta vs Exact Diagonalization:</strong> $3.56 \times 10^{-11}$ Hartree (well within chemical accuracy)</li>
             </ul>
+            <p style="margin-top: 1.5rem;">
+                <a href="vqe_h2_numpy.py" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold; border: 1px solid #38bdf8; padding: 0.5rem 1rem; border-radius: 4px; display: inline-block;">View NumPy Implementation Source</a>
+            </p>
         </section>
 
         <section class="card">
@@ -50,6 +54,9 @@ q_1: ┤ X ├──■──┤ Ry(θ) ├──■──
      └───┘     └───────┘     
             </pre>
             <p>The Qiskit primitive pipeline confirmed flawless alignment with our analytical expectations, tracking the state vector exactly to a precision delta of $4.48 \times 10^{-13}$ Hartree.</p>
+            <p style="margin-top: 1.5rem;">
+                <a href="vqe_h2_qiskit.py" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold; border: 1px solid #38bdf8; padding: 0.5rem 1rem; border-radius: 4px; display: inline-block;">View Qiskit Implementation Source</a>
+            </p>
         </section>
     </main>
 
