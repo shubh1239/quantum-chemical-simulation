@@ -1,0 +1,1 @@
+# Hand-Derived Analytical Proofs
