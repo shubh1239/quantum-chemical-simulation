@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Computing Portfolio | Shubham Jaju</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- MathJax for rendering gorgeous math equations -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js?config=TeX-mml-chtml"></script>
+    <!-- Modern MathJax v3 Configuration for rendering both single and double dollar signs -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -27,7 +35,7 @@
             
             $$E(\theta) = -1.052 + 0.7782\cos(\theta) - 0.182\sin(\theta)$$
 
-            <p>Optimizing analytically where $\frac{dE}{d\theta} = 0$ yields $\tan(\theta) = -\frac{0.182}{0.7782}$, localizing the optimal parameter at $\theta \approx 2.911\text{ rad } (166.8^\circ)$ with a theoretical ground state energy of **$-1.851199\text{ Hartree}$**.</p>
+            <p>Optimizing analytically where $\frac{dE}{d\theta} = 0$ yields $\tan(\theta) = -\frac{0.182}{0.7782}$, localizing the optimal parameter at $\theta \approx 2.911\text{ rad } (166.8^\circ)$ with a theoretical ground state energy of <strong>$-1.851199\text{ Hartree}$</strong>.</p>
         </section>
 
         <section class="card">
